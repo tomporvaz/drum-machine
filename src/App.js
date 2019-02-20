@@ -2,13 +2,27 @@ import React, { Component } from 'react';
 import bassDrum from './TR808_bass-drum.WAV';
 import './App.css';
 
-class App extends Component {
 
-  /* function needs this binding to work.  This function is only a test to understand how audio works.
-  playBassDrum () {
-    return bassDrum.play();
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      //"input": sampleText,
+      //"output": this.myMarkdown(sampleText)
+    };
+    //this.playBassDrum = this.playBassDrum.bind(this);
+
   }
-  */
+
+  
+
+  playBassDrum () {
+    let audioQ = document.getElementById("Q");
+    audioQ.play();
+  }
+
+
 
   render() {
     return (
@@ -18,9 +32,9 @@ class App extends Component {
         </header>
         <div id="drum-machine">
           <div id="display">Test text</div>
-          <audio src={bassDrum} controls></audio>
-          <img src="./logo.svg"></img>
-          <div className="drum-pad" id="Q" >Q</div>
+          c
+          
+          <div className="drum-pad" id="bassDrum" onClick={this.playBassDrum}>Q<audio src={bassDrum}id="Q"></audio></div>
           <div className="drum-pad" id="W">W</div>
           <div className="drum-pad" id="E">E</div>
 
