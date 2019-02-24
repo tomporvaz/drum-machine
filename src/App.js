@@ -29,6 +29,7 @@ class App extends Component {
 
 
   playSound (letter) {
+    console.log(letter);
     let audio = document.getElementById("Q");
     audio.play();
   }
@@ -42,6 +43,7 @@ class App extends Component {
   
 
   playBassDrum () {
+    
     let audioQ = document.getElementById("Q");
     audioQ.play();
   }
@@ -63,7 +65,7 @@ class App extends Component {
           <div id="display">Test text</div>
           c
           
-          <div className="drum-pad" id="bassDrum" onClick={this.playSound}>Q<audio src={bassDrum} id="Q"></audio></div>
+          <div className="drum-pad" id="bassDrum" onClick={this.handleClick}>Q<audio src={bassDrum} id="Q"></audio></div>
           <div className="drum-pad" id="cowBell" onClick={this.playCowBell}>W<audio src={cowBell} id="W"></audio></div>
           <div className="drum-pad" id="E">E</div>
 
