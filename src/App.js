@@ -17,10 +17,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      "clicked": ""
-      //"output": this.myMarkdown(sampleText)
+      "clicked": "Q",
+      "display": ""
     };
-    this.playBassDrum = this.playBassDrum.bind(this);
+    
     this.handleClick = this.handleClick.bind(this);
     this.playSound = this.playSound.bind(this);
 
@@ -33,8 +33,8 @@ class App extends Component {
   //use handle click to update state then us did update to play sound?
 
   handleClick (letter) {
-    //this.setState({"clicked": letter});
-    this.playSound(letter);
+    this.setState({"clicked": letter});
+    //this.playSound(this.state.clicked);
     //console.log("State: " + this.state.clicked);
   }  
   playSound (letter) {
@@ -42,18 +42,12 @@ class App extends Component {
     let audio = document.getElementById(letter);
     audio.play();
   }
-  
 
-  playBassDrum () {
-    
-    let audioQ = document.getElementById("Q");
-    audioQ.play();
+  componentDidUpdate() {
+    this.playSound(this.state.clicked);
+    console.log("State: " + this.state.clicked);
   }
 
-  playCowBell () {
-    let audioW = document.getElementById("W");
-    audioW.play();
-  }
 
 
 
@@ -65,19 +59,19 @@ class App extends Component {
         </header>
         <div id="drum-machine">
           <div id="display">Test text</div>
-          c
           
-          <div className="drum-pad" id="bassDrum" onClick={() => this.handleClick("Q")}>Q<audio src={bassDrum} id="Q"></audio></div>
-          <div className="drum-pad" id="lowTomTom" onClick={() => this.handleClick("W")}>W<audio src={lowTomTom} id="W"></audio></div>
-          <div className="drum-pad" id="snare" onClick={() => this.handleClick("E")}>E<audio src={snare} id="E"></audio></div>
+          
+          <div className="drum-pad" id="bassDrum" onClick={() => this.handleClick("Q")}>Q<audio class="clip" src={bassDrum} id="Q"></audio></div>
+          <div className="drum-pad" id="lowTomTom" onClick={() => this.handleClick("W")}>W<audio class="clip" src={lowTomTom} id="W"></audio></div>
+          <div className="drum-pad" id="snare" onClick={() => this.handleClick("E")}>E<audio class="clip" src={snare} id="E"></audio></div>
 
-          <div className="drum-pad" id="lowConga" onClick={() => this.handleClick("A")}>A<audio src={lowConga} id="A"></audio></div>
-          <div className="drum-pad" id="midConga" onClick={() => this.handleClick("S")}>S<audio src={midConga} id="S"></audio></div>
-          <div className="drum-pad" id="highConga" onClick={() => this.handleClick("D")}>D<audio src={highConga} id="D"></audio></div>
+          <div className="drum-pad" id="lowConga" onClick={() => this.handleClick("A")}>A<audio class="clip" src={lowConga} id="A"></audio></div>
+          <div className="drum-pad" id="midConga" onClick={() => this.handleClick("S")}>S<audio class="clip" src={midConga} id="S"></audio></div>
+          <div className="drum-pad" id="highConga" onClick={() => this.handleClick("D")}>D<audio class="clip" src={highConga} id="D"></audio></div>
 
-          <div className="drum-pad" id="cowbell" onClick={() => this.handleClick("Z")}>Z<audio src={cowBell} id="Z"></audio></div>
-          <div className="drum-pad" id="clap" onClick={() => this.handleClick("X")}>X<audio src={clap} id="X"></audio></div>
-          <div className="drum-pad" id="closedHH" onClick={() => this.handleClick("C")}>C<audio src={closedHH} id="C"></audio></div>
+          <div className="drum-pad" id="cowbell" onClick={() => this.handleClick("Z")}>Z<audio class="clip" src={cowBell} id="Z"></audio></div>
+          <div className="drum-pad" id="clap" onClick={() => this.handleClick("X")}>X<audio class="clip" src={clap} id="X"></audio></div>
+          <div className="drum-pad" id="closedHH" onClick={() => this.handleClick("C")}>C<audio class="clip" src={closedHH} id="C"></audio></div>
         </div>
 
 
